@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AnaController: UIViewController {
 
      let topStackView = anaGorunumUstStackView()
     //MARK:- UST MENüDE Kİ BUTONLARI TUTAR
@@ -44,10 +44,12 @@ class ViewController: UIViewController {
     }
     
     func profilGorunumuAyarla(){
-        print("profil gorunumu yarlandı")
-        let pView = ProfilView(frame: .zero)
-        profilDiziniView.addSubview(pView)
-        pView.doldurSuperView()
+        (0...10).forEach{(b) in
+            let pView = ProfilView(frame: .zero)
+                   profilDiziniView.addSubview(pView)
+                   pView.doldurSuperView()
+        }
+       
     }
 }
 

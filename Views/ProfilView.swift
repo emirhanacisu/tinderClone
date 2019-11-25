@@ -49,20 +49,23 @@ class ProfilView: UIView {
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             
             if profilKaybet  {
-                self.frame = CGRect(x: 10000000 * translationYonu, y: 0, width: self.frame.width, height: self.frame.height)
-            
+                self.frame = CGRect(x: 600 * translationYonu, y: 0, width: self.frame.width, height: self.frame.height)
+               
                 //let ekranDisiTransform = self.transform.translatedBy(x: 900, y: 0)
                 //self.transform = ekranDisiTransform
             } else{
                 self.transform = .identity
             }
             
-           
+            
         }) { (_) in
             
             print("animasyon bitti kart geri gelsin")
             self.transform = .identity
-            self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
+            if profilKaybet {
+                
+            }
+            //self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
             
         }
         
