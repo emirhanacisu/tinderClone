@@ -10,35 +10,44 @@ import UIKit
 
 class ViewController: UIViewController {
 
+     let topStackView = anaGorunumUstStackView()
+    //MARK:- UST MENüDE Kİ BUTONLARI TUTAR
+    let buttonlarStackView = anaGorunumAltStackView()
+    let profilDiziniView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
       
-       
-        
-        
-        let topStackView = anaGorunumUstStackView()
-        topStackView.distribution = .fillEqually
-        topStackView.heightAnchor.constraint(equalToConstant: 110).isActive = true
-              
-               let yesilView = UIView()
-               yesilView.backgroundColor = .green
-        
-        
-        let buttonlarStackView = anaGorunumAltStackView()
-       
-        
-        
-        
-               let generalStackView = UIStackView(arrangedSubviews: [topStackView,yesilView,buttonlarStackView])
-    
-               generalStackView.axis = .vertical
-               view.addSubview(generalStackView)
-      
 
-        generalStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor)
+               
+       
+        layoutDuzenle()
+        profilGorunumuAyarla()
+
+               
               
     }
 
+//MARK:- LAYOUTDÜZENLEYEN FONKSİYON
+    func layoutDuzenle(){
+        let generalStackView = UIStackView(arrangedSubviews: [topStackView,profilDiziniView,buttonlarStackView])
+        generalStackView.axis = .vertical
+        view.addSubview(generalStackView)
+          
 
+        generalStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                bottom:view.safeAreaLayoutGuide.bottomAnchor,
+                                leading: view.leadingAnchor,
+                                trailing: view.trailingAnchor)
+        generalStackView.isLayoutMarginsRelativeArrangement = true
+        generalStackView.layoutMargins = .init(top: 0, left: 10, bottom: 0, right: 10)
+        generalStackView.bringSubviewToFront(profilDiziniView)
+    }
+    
+    func profilGorunumuAyarla(){
+        print("profil gorunumu yarlandı")
+        let pView = ProfilView(frame: .zero)
+        profilDiziniView.addSubview(pView)
+        pView.doldurSuperView()
+    }
 }
 

@@ -10,17 +10,24 @@ import UIKit
 
 class anaGorunumUstStackView: UIStackView {
 
+    
+    let imgAlev = UIImageView(image: #imageLiteral(resourceName: "logo"))
+    let btnMesaj = UIButton(type: .system)
+    let btnAyarlar = UIButton(type: .system)
+    
     override init(frame: CGRect) {
         super.init(frame : frame)
-        let buttonlar = [#imageLiteral(resourceName: "settings"),#imageLiteral(resourceName: "logo"),#imageLiteral(resourceName: "chat")].map{ (goruntu) -> UIView in
-            let button = UIButton(type: .system)
-         
-            button.setImage(goruntu.withRenderingMode(.alwaysOriginal) , for: .normal)
-            return button
-        }
-        buttonlar.forEach{(b) in
+      
+        imgAlev.contentMode = .scaleAspectFit
+        btnMesaj.setImage( #imageLiteral(resourceName: "chat").withRenderingMode(.alwaysOriginal), for: .normal)
+        btnAyarlar.setImage( #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        [btnAyarlar,UIView(),imgAlev,UIView(),btnMesaj].forEach{(b) in
             addArrangedSubview(b)
         }
+        distribution = .equalCentering
+        heightAnchor.constraint(equalToConstant: 80).isActive = true
+        layoutMargins = .init(top: 0, left: 18, bottom: 0, right: 18)
     }
     
     
